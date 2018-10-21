@@ -11,7 +11,7 @@
 //
 
 
-var scores,roundScore,activePlayer,gamePlaying;
+var scores,roundScore,activePlayer,gamePlaying,previous;
 
   init();
 
@@ -69,13 +69,22 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
     diceDOM.src = `dice-${dice}.png`;
     diceDOM.style.display = 'block';
     //Update the roundScore
-    if (dice!==1) {
+    if(previous === 6 && dice === 6){
+      roundScore = 0;
+      scores[activePlayer]  = 0;
+      document.querySelector(`#current-${activePlayer}`).textContent = 0;
+      document.querySelector(`#score-${activePlayer}`).textContent = 0;
+      newPlayer();
+    }
+    else if (dice!==1) {
       roundScore+=dice;
       document.querySelector(`#current-${activePlayer}`).textContent = roundScore;
     }else{
       newPlayer();
     }
+    previous = dice;
   }
+
 });
 
 
