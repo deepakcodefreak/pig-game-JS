@@ -11,7 +11,7 @@
 //
 
 
-var scores,roundScore,activePlayer,gamePlaying,previous;
+var scores,roundScore,activePlayer,gamePlaying,previous,n=100;
 
   init();
 
@@ -96,7 +96,7 @@ document.querySelector(`.btn-hold`).addEventListener('click',function(){
         // Update UI
     document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
     //check if player won the game
-            if (scores[activePlayer]>=20) {
+            if (scores[activePlayer]>=n) {
           document.querySelector(`#name-${activePlayer}`).textContent = 'Winner';
           document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
           document.querySelector('.dice').style.display  = 'none';
@@ -111,3 +111,10 @@ document.querySelector(`.btn-hold`).addEventListener('click',function(){
 
 
 document.querySelector(`.btn-new`).addEventListener('click',init);
+
+
+
+document.querySelector('#mybutton').addEventListener('click',function(){
+    n = document.getElementById("myText").value;
+    console.log(n);
+})
